@@ -1,20 +1,7 @@
-apiVersion: kpt.dev/v1alpha1
+apiVersion: kpt.dev/v1
 kind: Kptfile
 metadata:
   name: zookeeper
-packageMetadata:
-  shortDescription: sample description
-openAPI:
-  definitions:
-    io.k8s.cli.setters.replicas:
-      x-k8s-cli:
-        setter:
-          name: replicas
-          value: "3"
-          isSet: true
-    io.k8s.cli.setters.namespace:
-      x-k8s-cli:
-        setter:
-          name: namespace
-          value: default
-          isSet: true
+pipeline:
+  mutators:
+    - image: gcr.io/mortent-dev-kube/zookeeper-fn
